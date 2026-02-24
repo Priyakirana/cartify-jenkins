@@ -6,10 +6,10 @@ pipeline {
     }
 
     environment {
-        AWS_ACCOUNT_ID = "909688465000"
-        REGION = "ap-south-1"
+        AWS_ACCOUNT_ID = "372123585601"
+        REGION = "ap-northeast-3"
         REPO_URI = "${AWS_ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com/devops"
-        DOCKER_IMAGE = "clahan-app-web:${VERSION}"
+        DOCKER_IMAGE = "zepto-app-web:${VERSION}"
         DOCKER_REGISTRY = "docker.io"
         DOCKER_REGISTRY_CREDENCIALS = "docker_creds"
     }
@@ -18,7 +18,7 @@ pipeline {
         stage('Clone') {
             steps {
                 echo "Cloing the GitHub Repository"
-                git url: 'https://github.com/Msocial123/Fitness_Tracker.git', branch: 'master'
+                git url: 'https://github.com/Priyakirana/cartify-me.git', branch: 'main'
             }
         }
 
@@ -50,8 +50,8 @@ pipeline {
                   echo "Pushing the docker image to Docker Hub"
                   sh """
                     docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
-                    docker tag ${DOCKER_IMAGE} muralisocial123/${DOCKER_IMAGE}
-                    docker push muralisocial123/${DOCKER_IMAGE}
+                    docker tag ${DOCKER_IMAGE} priyakirana14/${DOCKER_IMAGE}
+                    docker push priyakirana14/${DOCKER_IMAGE}
                     """  
             }
             }
