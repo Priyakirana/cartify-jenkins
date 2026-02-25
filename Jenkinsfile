@@ -67,8 +67,7 @@ pipeline {
             steps {
                 echo "Running Docker Container on Jenkins EC2 instance"
                 sh """
-                    docker stop cartify-zepto-container
-                    docker rm cartify-zepto-container
+                    
                     docker run -d --name ${CONTAINER_NAME} -p ${APP_PORT}:80 ${DOCKER_IMAGE}
                 """
             }
