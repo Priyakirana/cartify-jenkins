@@ -12,6 +12,8 @@ pipeline {
         DOCKER_IMAGE = "zepto-app-web:${VERSION}"
         DOCKER_REGISTRY = "docker.io"
         DOCKER_REGISTRY_CREDENCIALS = "docker_creds"
+        CONTAINER_NAME = "cartify-zepto-container"
+        APP_PORT = "5000"
     }
 
     stages {
@@ -38,7 +40,7 @@ pipeline {
                             aws ecr get-login-password --region ${REGION} | docker login --username AWS --password-stdin ${REPO_URI}
                             docker tag ${DOCKER_IMAGE} ${REPO_URI}:${VERSION}
                             docker push ${REPO_URI}:${VERSION}
-                        """
+                    """
                     }
                 }
             }
@@ -59,6 +61,16 @@ pipeline {
                     docker push priyakirana14/${DOCKER_IMAGE}
                     """  
             }
+            }
+        }
+        stage('Run Container') {
+            steps {
+                echo "Running Docker Container on Jenkins EC2 instance"
+                sh """
+                    docker stop cartify-zepto-container
+                    docker rm cartify-zepto-container
+                    docker run -d --name ${CONTAINER_NAME} -p ${APP_PORT}:80 ${DOCKER_IMAGE}
+                """
             }
         }
 
