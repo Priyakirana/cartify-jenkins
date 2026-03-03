@@ -13,3 +13,8 @@ spec:
       image: priyakirana14/vegetables:v1.0.0
       ports:
         -  containerPort: 3000
+
+    - name: flipkart-cont
+      image: priyakirana14/newflipkart:v1.0.0
+      ports:
+       -  containerPort: 80
