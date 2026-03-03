@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: zepto-pod
+  namespace: test-ns
+spec:
+  containers:
+    - name: zepto-cont
+      image: priyakirana14/newflipkart:v1.0.0
+      ports:
+       -  containerPort: 80
