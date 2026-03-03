@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flower-app-deployment
+  labels:
+    first: app
+spec: 
+  replicas: 3
+  selector: 
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+        - image: priyakirana14/sre-web-app:v1.0.0
+          name: flower-cont
+          ports:
+            - containerPort: 3015

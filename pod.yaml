@@ -1,0 +1,11 @@
+apiVersion: V1
+kind: Pod
+metadata:
+  name: zepto-pod
+spec:
+  containers:
+    - name: zepto-cont
+      image: priyakirana14/zepto-web-app:v1.0.0
+      ports:
+        - containerPort: 80
+       
