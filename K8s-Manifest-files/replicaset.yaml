@@ -1,4 +1,3 @@
-
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
@@ -10,13 +9,13 @@ spec: #Defines the behaviour of replicaset
   selector:    #specify how to identify the pods that belong to this replicaset
     matchLabels:
       web: zepto
-template: 
-  metadata:
-    labels:      #it is belonging to pod template
-      web: zepto
-  spec:               #Defines the behaviour of pod
-    containers:
-      - image: priyakirana14/zepto-app-web:v5.1.0
-        name: zepto-cont
-        ports:
-          - containerPort: 3015
+  template: 
+    metadata:
+      labels:      #it is belonging to pod template
+        web: zepto
+    spec:               #Defines the behaviour of pod
+      containers:
+        - image: priyakirana14/zepto-app-web:v5.1.0
+          name: zepto-cont
+          ports:
+            - containerPort:80
