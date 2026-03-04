@@ -1,32 +1,20 @@
+
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
-  name: flower-app-rs
+  name: zepto-app-rs
 spec: #Defines the behaviour of replicaset
   replicas: 3
-  selector:    //specify how to identify the pods that belong to this replicaset
+  selector:    #specify how to identify the pods that belong to this replicaset
     matchLabels:
-      web: flower
+      web: zepto
 template: 
   metadata:
-    labels:      //it is belonging to pod template
-      web: flower
-  apiVersion: apps/v1
-kind: ReplicaSet
-metadata:
-  name: flower-app-rs
-spec: #Defines the behaviour of replicaset
-  replicas: 3
-  selector:    //specify how to identify the pods that belong to this replicaset
-    matchLabels:
-      web: flower
-template: 
-  metadata:
-    labels:      //it is belonging to pod template
-      web: flower
+    labels:      #it is belonging to pod template
+      web: zepto
   spec: #Defines the behaviour of pod
     containers:
-      - image: priyakirana14/sre-web-app:v1.0.0
-        name: sre-web
+      - image: priyakirana14/zepto-app-web:v5.1.0
+        name: zepto-cont
         ports:
           - containerPort: 3015
