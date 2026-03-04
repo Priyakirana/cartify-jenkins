@@ -1,21 +1,21 @@
-apiVersion: apps/v1
-kind: ReplicaSet
-metadata:
+apiVersion: apps/v1 
+kind: ReplicaSet 
+metadata: 
   name: zepto-app-rs
   labels:
     app: web
-spec: #Defines the behaviour of replicaset
-  replicas: 3
-  selector:    #specify how to identify the pods that belong to this replicaset
+spec: # Defines the Behaviour of the replicaset 
+  replicas: 3 
+  selector:
     matchLabels:
       web: zepto
-  template: 
+  template:
     metadata:
-      labels:      #it is belonging to pod template
-        web: zepto
-    spec:               #Defines the behaviour of pod
+      labels:
+        web: zepto 
+    spec: # Defines the Behaviour of the Pod 
       containers:
         - image: priyakirana14/zepto-app-web:v5.1.0
-          name: zepto-cont
+          name: zepto-web-cont
           ports:
-            - containerPort:80
+            - containerPort: 80
