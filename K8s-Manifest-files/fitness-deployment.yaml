@@ -16,6 +16,6 @@ spec:
     spec: 
       containers:
         - name: fitness-cont 
-          image: mpriyakirana14/fitness-tracker:v1.0.0
+          image: priyakirana14/fitness-tracker:v1.0.0
           ports: 
             - containerPort: 5000
